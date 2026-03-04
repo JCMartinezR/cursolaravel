@@ -21,21 +21,28 @@
           <a class="nav-link active" aria-current="page" href="#">Inicio</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Artículos</a>
+          <a class="nav-link active" aria-current="page" href="{{ route('sitio.articulos') }}">Artículos</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Etiquetas</a>
+          <a class="nav-link active" aria-current="page" href="{{ route('sitio.etiquetas') }}">Etiquetas</a>
         </li>
       </ul>
-      <form class="d-flex" role="search">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
-        <button class="btn btn-outline-success" type="submit">Search</button>
-      </form>
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          @if(Auth::user())
+          <a href="{{ route('cerrar') }}" class="nav-link active">{{ Auth::user()->nombre }}</a>
+          @else
+          <a href="{{ route('iniciarSesion') }}" class="nav-link active">Iniciar sesión</a>
+          @endif
+        </li>
+      </ul>
     </div>
   </div>
 </nav>
 
-@yield('contenido')
+<div class="container">
+  @yield('contenido')
+</div>
 
 
 @yield('js')
