@@ -5,7 +5,7 @@ if(!isset($descripcion)){
 @endphp
 
 <div class="card d-inline-block" style="width: 18rem;">
-  <img src="{{ $portada }}" class="card-img-top" alt="...">
+  <img src="{{ asset($portada) }}" class="card-img-top" alt="...">
   <div class="card-body">
     <h5 class="card-title">{{ $titulo }}</h5>
     <p class="card-text">{{ $descripcion }}</p>

@@ -28,13 +28,18 @@
         </li>
       </ul>
       <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        @if(Auth::user())
         <li class="nav-item">
-          @if(Auth::user())
           <a href="{{ route('cerrar') }}" class="nav-link active">{{ Auth::user()->nombre }}</a>
-          @else
-          <a href="{{ route('iniciarSesion') }}" class="nav-link active">Iniciar sesión</a>
-          @endif
         </li>
+        @else
+        <li class="nav-item">
+          <a href="{{ route('registro') }}" class="nav-link active">Registrarme</a>
+        </li>
+        <li class="nav-item">
+          <a href="{{ route('iniciarSesion') }}" class="nav-link active">Iniciar sesión</a>
+        </li>
+        @endif
       </ul>
     </div>
   </div>
@@ -45,6 +50,8 @@
 </div>
 
 
+@include('sweetalert::alert')
+<script src="{{ asset('vendor/sweetalert/sweetalert.all.js') }}"></script>
 @yield('js')
 </body>
 </html>
